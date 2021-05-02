@@ -1,8 +1,8 @@
 require "./Room"
 
 class WinningRoom < Room
-  def initialize(title, action_options, game_state)
-    super(title, action_options, game_state)
+  def initialize(title, description, action_options, game_state)
+    super(title, description, action_options, game_state)
   end
 
   def renderOptions

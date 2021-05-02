@@ -1,10 +1,10 @@
 require "./Race"
 
 class Hero < Race
-  attr_accessor :health, :base_atack
+  attr_accessor :health, :base_attack
 
   def initialize
-    super(60, 10)
+    super(60, 10, "human")
   end
 
   def cure

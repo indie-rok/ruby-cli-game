@@ -1,8 +1,11 @@
 require "./Room"
 
+MONSTER_TYPE_FONT_COLOR_MAPPING = { "ground": "brown", "fire": "red", "grass": "green" }
+
 class RoomMonster < Room
-  def initialize(title, action_options, game_state)
-    super(title, action_options, game_state)
+  def initialize(title, description, action_options, game_state)
+    super(title, description, action_options, game_state)
+    p @monster
     @monster = Monster.new
   end
 
@@ -18,7 +21,7 @@ class RoomMonster < Room
 
   def up
     if @monster.health >= 0
-      @messages.push "You can't pass until monster is dead"
+      p "You can't pass until monster is dead"
     else
       super
     end
@@ -26,16 +29,16 @@ class RoomMonster < Room
 
   def renderOptions
     super()
-    @messages = []
 
     if @monster.health > 0
-      @messages.push "monster health is #{@monster.health}"
-      @messages.push "heroHealth is #{@game_state[:hero].health}"
+      puts "You find a " + @monster.type.send(MONSTER_TYPE_FONT_COLOR_MAPPING[@monster.type.to_sym]) + " monster"
+      puts "monster health is #{@monster.health}"
+      puts "heroHealth is #{@game_state[:hero].health}"
     elsif @monster.health <= 0
-      @messages.push "monster is dead"
-      @messages.push "YOU ARE VICTORIOUS"
+      puts "monster is dead"
+      puts "YOU ARE VICTORIOUS"
     end
 
-    puts "#{@messages.join("\n")}"
+    @messages = []
   end
 end

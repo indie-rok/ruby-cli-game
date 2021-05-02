@@ -1,14 +1,15 @@
 class Race
-  attr_accessor :health, :base_atack
+  attr_accessor :health, :base_attack, :type
 
-  def initialize(health, base_atack)
+  def initialize(health, base_attack, type)
     @health = health
-    @base_atack = base_atack
+    @base_attack = base_attack
+    @type = type
     @messages = []
   end
 
   def attack(race)
-    race.health -= @base_atack + self.generateRandomLuck(1..10)
+    race.health -= @base_attack + self.generateRandomLuck(1..10)
   end
 
   def scratch(race)
