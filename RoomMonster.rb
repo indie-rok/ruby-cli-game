@@ -5,7 +5,6 @@ MONSTER_TYPE_FONT_COLOR_MAPPING = { "ground": "brown", "fire": "red", "grass": "
 class RoomMonster < Room
   def initialize(title, description, action_options, game_state)
     super(title, description, action_options, game_state)
-    p @monster
     @monster = Monster.new
   end
 

@@ -1,5 +1,5 @@
 class Room
-  attr_accessor :messages
+  attr_accessor :messages, :game_state
 
   def initialize(title, description, actionOptions, game_state)
     @title = title
